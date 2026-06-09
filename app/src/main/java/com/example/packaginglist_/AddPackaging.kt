@@ -3,6 +3,21 @@
     private lateinit var btnAddItem : Button
     private lateinit var btnScreenTwo : Button
     private lateinit var btnExit : Button
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+
+class AddPackaging : AppCompatActivity() {
+
+    val packingList = arrayListOf<String>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_add_packaging)
+
         val btnAddItem = findViewById<Button>(R.id.btnAddItem)
         val btnScreenTwo = findViewById<Button>(R.id.btnScreenTwo)
         val btnExit = findViewById<Button>(R.id.btnExit)
@@ -32,3 +47,8 @@
             startActivity(intent)
         }
 
+        btnExit.setOnClickListener {
+            finish()
+        }
+    }
+}
