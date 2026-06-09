@@ -1,8 +1,5 @@
-    //Declarations
-    private lateinit var  tvTitle : TextView
-    private lateinit var btnAddItem : Button
-    private lateinit var btnScreenTwo : Button
-    private lateinit var btnExit : Button
+package com.example.packaginglist_
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,7 +13,7 @@ class AddPackaging : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_packaging)
+        setContentView(R.layout.addpackaging_activity)
 
         val btnAddItem = findViewById<Button>(R.id.btnAddItem)
         val btnScreenTwo = findViewById<Button>(R.id.btnScreenTwo)
@@ -30,7 +27,7 @@ class AddPackaging : AppCompatActivity() {
             input.hint = "Enter item name"
             builder.setView(input)
 
-            builder.setPositiveButton("Add") { dialog, _ ->
+            builder.setPositiveButton("Add") { _, _ ->
                 val item = input.text.toString()
                 packingList.add(item)
             }
@@ -43,7 +40,8 @@ class AddPackaging : AppCompatActivity() {
         }
 
         btnScreenTwo.setOnClickListener {
-            val intent = Intent(this, ScreenTwo::class.java)
+            val intent = Intent(this, DisplayPackaging::class.java)
+            intent.putStringArrayListExtra("packingList", packingList)
             startActivity(intent)
         }
 
